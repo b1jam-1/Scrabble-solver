@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+ENV/
+env/
+.mypy_cache/
+.pytest_cache/
+.DS_Store
+*.log
+backend/mots.txt
+.env
+.env.*
+.vscode/
+illustration.png

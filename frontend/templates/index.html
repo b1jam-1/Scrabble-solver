@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scrabble Solver</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <!-- Fenêtre d'aide -->
+  <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="helpModalLabel">Aide - Comment utiliser le Scrabble Solver</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li><b>Remplir la grille :</b> Cliquez sur une case pour la sélectionner, puis tapez une lettre au clavier. Sinon drag & drop depuis le chevalet.<br>
+              <small>Majuscule = lettre normale, minuscule = joker (lettre grisée).</small>
+            </li>
+            <li><b>Utiliser le chevalet :</b> Cliquez sur une case du chevalet et tapez la lettre correspondante.<br>
+              <small>Utilisez <b>?</b> pour un joker dans le chevalet.</small>
+            </li>
+            <li><b>Effacer une case :</b> Appuyez sur <kbd>Suppr</kbd> ou <kbd>Retour arrière</kbd> après avoir sélectionné une case.</li>
+            <li><b>Calculer les coups :</b> Cliquez sur "Calculer" ou appuyez sur <kbd>Entrée</kbd>.</li>
+            <li><b>Vider la grille :</b> Cliquez sur "Vider" pour tout effacer.</li>
+            <li><b>Charger / Sauvegarder la grille :</b> Cliquez sur "Charger une grille (.txt)" pour importer un fichier texte (format attendu : 15 lignes de 15 caractères — utilisez '.' pour les cases vides, lettres majuscules pour lettres fixées, '?' pour joker). Cliquez sur "Sauvegarder la grille (.txt)" pour télécharger l'état actuel de la grille au même format.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <main class="container-fluid px-2 px-md-4">
+    <div class="row g-3 flex-lg-nowrap">
+  <!-- Section plateau et chevalet du joueur -->
+      <section class="col-12 col-lg-7 col-xl-6 mb-3">
+        <div class="card elevated-card mt-3">
+          <div class="card-body">
+            <div class="board-wrap d-flex justify-content-center mb-3">
+              <div id="board" class="board-grid" aria-label="Grille de Scrabble" tabindex="0"></div>
+            </div>
+
+            <div class="d-flex align-items-center gap-3 mb-3 no-wrap-rack-btns">
+              <div id="rackdiv" class="rack-area flex-shrink-1" aria-label="Chevalet du joueur"></div>
+              <form class="d-flex align-items-center gap-3 mb-0" onsubmit="return false;">
+                <div class="d-flex align-items-center gap-2">
+                  <label for="topk" class="form-label mb-0 small text-muted">Top</label>
+                  <input id="topk" type="number" class="form-control form-control-sm" value="10" min="1" max="100" style="width:80px" aria-label="Nombre de coups à afficher">
+                </div>
+                <button id="compute" class="btn btn-primary" type="button">Calculer</button>
+                <button id="clear" class="btn btn-outline-secondary" type="button">Vider</button>
+              </form>
+            </div>
+
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <input type="file" id="board-upload-file" accept=".txt" style="display:none">
+              <button id="board-upload-btn" class="btn btn-outline-primary" type="button">Charger une grille (.txt)</button>
+              <button id="board-download-btn" class="btn btn-outline-success" type="button">Sauvegarder la grille (.txt)</button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+  <!-- Section des meilleurs coups proposés -->
+      <section class="col-12 col-lg-5 col-xl-6 mb-3">
+        <div class="card elevated-card sticky-panel w-100">
+          <div class="card-body">
+            <h2 class="h5 card-title">Meilleurs coups</h2>
+            <div id="loader" class="d-none text-center my-3">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Chargement...</span>
+              </div>
+            </div>
+            <ul id="moves" class="list-group mb-3 moves-list" style="max-height:78vh; overflow:auto" aria-live="polite"></ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
