@@ -4,6 +4,8 @@ Solveur Scrabble complet en Python avec interface web (Flask + JavaScript) et mo
 
 Toutes les fonctionnalités sont également accessibles via une API REST documentée, idéale pour l’intégration, l’automatisation ou l’utilisation avancée (voir section [API REST](#api-rest)).
 
+<img width="2750" height="1392" alt="illustration" src="https://github.com/user-attachments/assets/5452be37-cd99-44d2-bcad-0ef55209040a" />
+
 ---
 
 ## Sommaire
