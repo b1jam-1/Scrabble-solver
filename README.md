@@ -14,7 +14,7 @@ Toutes les fonctionnalités sont également accessibles via une API REST documen
 - [Prérequis](#prérequis)
 - [Installation](#installation)
 - [Lancement](#lancement)
-- [Utilisation via l'interface web](#utilisation)
+- [Utilisation via l'interface web](#interface-web)
 - [Utilisation via l'API REST](#api-rest)
 - [API Python](#api-python)
 - [Structure du projet](#structure-du-projet)
